@@ -1,17 +1,23 @@
 <template>
   <v-data-table
+    v-model="selected"
     :headers="headers"
     :items="desserts"
-    :items-per-page="5"
+    :items-per-page="15"
+    :single-select="singleSelect"
+    item-key="name"
+    show-select
     class="elevation-1"
-  ></v-data-table>
+  >
+  </v-data-table>
 </template>
 
 <script>
-
   export default {
     data () {
       return {
+        singleSelect: false,
+        selected: [],
         headers: [
           {
             text: 'Dessert (100g serving)',

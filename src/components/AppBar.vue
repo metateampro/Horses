@@ -10,7 +10,7 @@
         class="ml-0"
     >
         
-        <span class="hidden-sm-and-down">horse</span>
+        <span class="hidden-sm-and-down">A lot of horses</span>
     </v-toolbar-title>
     <v-tabs background-color="#1565c0"
     color="blue">

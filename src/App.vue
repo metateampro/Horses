@@ -12,6 +12,7 @@ import Vue from 'vue';
 import HelloWorld from './components/HelloWorld.vue';
 import Home from './components/Home.vue';
 import AppBar from './components/AppBar.vue';
+import EditTable from './components/EditTable.vue';
 
 export default Vue.extend({
   name: 'App',
@@ -19,6 +20,7 @@ export default Vue.extend({
     Home,
     HelloWorld,
     AppBar,
+    EditTable,
   },
   data: () => ({
     //
