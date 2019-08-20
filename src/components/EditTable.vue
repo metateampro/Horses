@@ -1,66 +1,237 @@
 <template>
-  <div>
-    <vue-good-table
-      title="Demo Table"
-      :columns="columns"
-      :rows="rows"
-      :paginate="true"
-      :lineNumbers="true"/>
-  </div>
+  <v-data-table
+    :headers="headers"
+    :items="desserts"
+    sort-by="calories"
+    class="elevation-1"
+  >
+    <template v-slot:top>
+      <v-toolbar flat color="white">
+        <v-toolbar-title>All horses</v-toolbar-title>
+        <v-divider
+          class="mx-4"
+          inset
+          vertical
+        ></v-divider>
+        <v-spacer></v-spacer>
+        <v-dialog v-model="dialog" max-width="500px">
+          <template v-slot:activator="{ on }">
+            <v-btn color="" class="mb-2" v-on="on"><v-icon>mdi-plus</v-icon></v-btn>
+                    <v-divider
+          class="mx-4"
+          inset
+          vertical
+        ></v-divider>
+            <v-btn color="" class="mb-2" ><v-icon>mdi-download</v-icon></v-btn>
+          </template>
+          <v-card>
+            <v-card-title>
+              <span class="headline">{{ formTitle }}</span>
+            </v-card-title>
+
+            <v-card-text>
+              <v-container>
+                <v-row>
+                  <v-col cols="12" sm="6" md="4">
+                    <v-text-field v-model="editedItem.name" label="Dessert name"></v-text-field>
+                  </v-col>
+                  <v-col cols="12" sm="6" md="4">
+                    <v-text-field v-model="editedItem.calories" label="Calories"></v-text-field>
+                  </v-col>
+                  <v-col cols="12" sm="6" md="4">
+                    <v-text-field v-model="editedItem.fat" label="Fat (g)"></v-text-field>
+                  </v-col>
+                  <v-col cols="12" sm="6" md="4">
+                    <v-text-field v-model="editedItem.carbs" label="Carbs (g)"></v-text-field>
+                  </v-col>
+                  <v-col cols="12" sm="6" md="4">
+                    <v-text-field v-model="editedItem.protein" label="Protein (g)"></v-text-field>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card-text>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
+              <v-btn color="blue darken-1" text @click="save">Save</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-toolbar>
+    </template>
+    <template v-slot:item.action="{ item }">
+      <v-icon
+        small
+        class="mr-2"
+        @click="editItem(item)"
+      >mdi-brush
+      </v-icon>
+      <v-icon
+        small
+        @click="deleteItem(item)"
+      >mdi-delete
+      </v-icon>
+    </template>
+    <template v-slot:no-data>
+      <v-btn color="primary" @click="initialize">Reset</v-btn>
+    </template>
+  </v-data-table>
 </template>
- 
 <script>
-export default {
-  name: 'test',
-  data(){
-    return {
-      columns: [
+  export default {
+    data: () => ({
+      dialog: false,
+      headers: [
         {
-          label: 'Name',
-          field: 'name',
-          filterable: true,
+          text: 'Dessert (100g serving)',
+          align: 'left',
+          sortable: false,
+          value: 'name',
         },
-        {
-          label: 'Age',
-          field: 'age',
-          type: 'number',
-          html: false,
-          filterable: true,
-        },
-        {
-          label: 'Created On',
-          field: 'createdAt',
-          type: 'date',
-          inputFormat: 'YYYYMMDD',
-          outputFormat: 'MMM Do YY',
-        },
-        {
-          label: 'Percent',
-          field: 'score',
-          type: 'percentage',
-          html: false,
-        },
+        { text: 'Calories', value: 'calories' },
+        { text: 'Fat (g)', value: 'fat' },
+        { text: 'Carbs (g)', value: 'carbs' },
+        { text: 'Protein (g)', value: 'protein' },
+        { text: 'Actions', value: 'action', sortable: false },
       ],
-      rows: [
-        {id:1, name:"John",age:20,createdAt: '201-10-31:9:35 am',score: 0.03343},
-        {id:2, name:"Jane",age:24,createdAt: '2011-10-31',score: 0.03343},
-        {id:3, name:"Susan",age:16,createdAt: '2011-10-30',score: 0.03343},
-        {id:4, name:"Chris",age:55,createdAt: '2011-10-11',score: 0.03343},
-        {id:5, name:"Dan",age:40,createdAt: '2011-10-21',score: 0.03343},
-        {id:6, name:"John",age:20,createdAt: '2011-10-31',score: 0.03343},
-        {id:7, name:"Jane",age:24,createdAt: '20111031'},
-        {id:8, name:"Susan",age:16,createdAt: '2013-10-31',score: 0.03343},
-        {id:9, name:"Chris",age:55,createdAt: '2012-10-31',score: 0.03343},
-        {id:10, name:"Dan",age:40,createdAt: '2011-10-31',score: 0.03343},
-        {id:11, name:"John",age:20,createdAt: '2011-10-31',score: 0.03343},
-        {id:12, name:"Jane",age:24,createdAt: '2011-07-31',score: 0.03343},
-        {id:13, name:"Susan",age:16,createdAt: '2017-02-28',score: 0.03343},
-        {id:14, name:"Chris",age:55,createdAt: '',score: 0.03343},
-        {id:15, name:"Dan",age:40,createdAt: '2011-10-31',score: 0.03343},
-        {id:19, name:"Chris",age:55,createdAt: '2011-10-31',score: 0.03343},
-        {id:20, name:"Dan",age:40,createdAt: '2011-10-31',score: 0.03343},
-      ],
-    };
-  },
-};
+      desserts: [],
+      editedIndex: -1,
+      editedItem: {
+        name: '',
+        calories: 0,
+        fat: 0,
+        carbs: 0,
+        protein: 0,
+      },
+      defaultItem: {
+        name: '',
+        calories: 0,
+        fat: 0,
+        carbs: 0,
+        protein: 0,
+      },
+    }),
+
+    computed: {
+      formTitle () {
+        return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
+      },
+    },
+
+    watch: {
+      dialog (val) {
+        val || this.close()
+      },
+    },
+
+    created () {
+      this.initialize()
+    },
+
+    methods: {
+      initialize () {
+        this.desserts = [
+          {
+            name: 'Frozen Yogurt',
+            calories: 159,
+            fat: 6.0,
+            carbs: 24,
+            protein: 4.0,
+          },
+          {
+            name: 'Ice cream sandwich',
+            calories: 237,
+            fat: 9.0,
+            carbs: 37,
+            protein: 4.3,
+          },
+          {
+            name: 'Eclair',
+            calories: 262,
+            fat: 16.0,
+            carbs: 23,
+            protein: 6.0,
+          },
+          {
+            name: 'Cupcake',
+            calories: 305,
+            fat: 3.7,
+            carbs: 67,
+            protein: 4.3,
+          },
+          {
+            name: 'Gingerbread',
+            calories: 356,
+            fat: 16.0,
+            carbs: 49,
+            protein: 3.9,
+          },
+          {
+            name: 'Jelly bean',
+            calories: 375,
+            fat: 0.0,
+            carbs: 94,
+            protein: 0.0,
+          },
+          {
+            name: 'Lollipop',
+            calories: 392,
+            fat: 0.2,
+            carbs: 98,
+            protein: 0,
+          },
+          {
+            name: 'Honeycomb',
+            calories: 408,
+            fat: 3.2,
+            carbs: 87,
+            protein: 6.5,
+          },
+          {
+            name: 'Donut',
+            calories: 452,
+            fat: 25.0,
+            carbs: 51,
+            protein: 4.9,
+          },
+          {
+            name: 'KitKat',
+            calories: 518,
+            fat: 26.0,
+            carbs: 65,
+            protein: 7,
+          },
+        ]
+      },
+
+      editItem (item) {
+        this.editedIndex = this.desserts.indexOf(item)
+        this.editedItem = Object.assign({}, item)
+        this.dialog = true
+      },
+
+      deleteItem (item) {
+        const index = this.desserts.indexOf(item)
+        confirm('Are you sure you want to delete this item?') && this.desserts.splice(index, 1)
+      },
+
+      close () {
+        this.dialog = false
+        setTimeout(() => {
+          this.editedItem = Object.assign({}, this.defaultItem)
+          this.editedIndex = -1
+        }, 300)
+      },
+
+      save () {
+        if (this.editedIndex > -1) {
+          Object.assign(this.desserts[this.editedIndex], this.editedItem)
+        } else {
+          this.desserts.push(this.editedItem)
+        }
+        this.close()
+      },
+    },
+  }
 </script>
