@@ -9,14 +9,9 @@
         style="width: 300px"
         class="ml-0"
     >
-        
-        <span class="hidden-sm-and-down">A lot of horses</span>
+        <v-app-bar-nav-icon @click="toggleSideBar"></v-app-bar-nav-icon>
+        <span class="hidden-sm-and-down">h' s</span>
     </v-toolbar-title>
-    <v-tabs background-color="#1565c0"
-    color="blue">
-      <v-tab :to="'/'">Main</v-tab>
-      <v-tab :to="'/about'">About</v-tab>
-    </v-tabs>
     <v-spacer></v-spacer>
     <v-text-field
         flat
@@ -26,6 +21,7 @@
         label="Search"
         class="hidden-sm-and-down"
     ></v-text-field>
+    
     <v-btn icon>
         <v-icon>mdi-apps</v-icon>
     </v-btn>
@@ -40,11 +36,7 @@
         size="32px"
         item
         >
-        <v-img
-            src="./../assets/horse.jpg"
-            alt="Vuetify"
-        >
-        </v-img></v-avatar>
+    </v-avatar>
     </v-btn>
     </v-app-bar>
 </template>

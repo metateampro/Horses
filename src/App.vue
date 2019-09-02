@@ -1,6 +1,7 @@
 <template>
   <v-app>
-    <AppBar />>
+    <LeftBarMenu />
+    <AppBar />
     <v-content>
         <router-view></router-view>
     </v-content>
@@ -9,18 +10,18 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
 import Home from './components/Home.vue';
 import AppBar from './components/AppBar.vue';
 import EditTable from './components/EditTable.vue';
+import LeftBarMenu from './components/LeftBarMenu.vue';
 
 export default Vue.extend({
   name: 'App',
   components: {
     Home,
-    HelloWorld,
     AppBar,
     EditTable,
+    LeftBarMenu,
   },
   data: () => ({
     //
