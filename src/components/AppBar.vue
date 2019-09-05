@@ -2,7 +2,7 @@
     <v-app-bar
     :clipped-left="$vuetify.breakpoint.lgAndUp"
     app
-    color="blue darken-3"
+    color="green darken-3"
     dark
     >
     <v-toolbar-title

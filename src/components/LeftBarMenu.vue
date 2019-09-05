@@ -2,7 +2,8 @@
     <v-navigation-drawer
       v-model="showSideBar"
       :clipped="$vuetify.breakpoint.lgAndUp"
-      app>
+      app
+      color="green light">
       <v-list dense>
         <template v-for="item in items">
           <v-layout
