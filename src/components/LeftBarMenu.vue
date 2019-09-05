@@ -38,6 +38,7 @@
             <v-list-item
               v-for="(child, i) in item.children"
               :key="i"
+              :to="child.routerLink +'/'+ child.text || '*'"
               >
               <v-list-item-action v-if="child.icon">
                 <v-icon>{{ child.icon }}</v-icon>
@@ -90,10 +91,10 @@ import AppBar from './AppBar.vue'
           text: 'Мероприятия',
           model: false,
           children: [
-            { text: 'Чемпионат для лошадей Орловской рысистой породы' },
-            { text: 'Кубок среди лошадей Ахалтекинской чистокровной породы' },
-            { text: 'Чемпионат России среди лошадей Арабской чистокровной породы' },
-            { text: 'Дни спортивного коннозаводства' },
+            { text: 'Чемпионат для лошадей Орловской рысистой породы', routerLink: '/event' },
+            { text: 'Кубок среди лошадей Ахалтекинской чистокровной породы', routerLink: '/event' },
+            { text: 'Чемпионат России среди лошадей Арабской чистокровной породы', routerLink: '/event' },
+            { text: 'Дни спортивного коннозаводства', routerLink: '/event' },
           ],
         },
         {icon:'mdi-texture', text: 'Сводная таблица', routerLink: '/about' },

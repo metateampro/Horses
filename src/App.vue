@@ -12,7 +12,6 @@
 import Vue from 'vue';
 import Home from './components/Home.vue';
 import AppBar from './components/AppBar.vue';
-import EditTable from './components/EditTable.vue';
 import LeftBarMenu from './components/LeftBarMenu.vue';
 
 export default Vue.extend({
@@ -20,7 +19,6 @@ export default Vue.extend({
   components: {
     Home,
     AppBar,
-    EditTable,
     LeftBarMenu,
   },
   data: () => ({
