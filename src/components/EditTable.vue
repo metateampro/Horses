@@ -202,7 +202,8 @@
             carbs: 65,
             protein: 7,
           },
-        ]
+        ];
+		this.$store.dispatch('getAPIData');
       },
 
       editItem (item) {
