@@ -99,7 +99,7 @@ import AppBar from './AppBar.vue'
           ],
         },
         {icon:'mdi-texture', text: 'Сводная таблица', routerLink: '/about' },
-        
+        {text: 'Admin', routerLink: '/admin'},
       ],
     }),
   }

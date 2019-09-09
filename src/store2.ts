@@ -1,8 +1,21 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
-import axios from 'axios';
+import Vuex, { StoreOptions } from 'vuex';
+import { RootState } from './types';
+import { profile } from './profile/index';
 
 Vue.use(Vuex);
+
+const store: StoreOptions<RootState> = {
+  state: {
+    version: '1.0.0',
+  },
+  modules: {
+    profile,
+  },
+};
+export default new Vuex.Store<RootState>(store);
+
+/*
 
 export default new Vuex.Store({
   state: {
@@ -17,18 +30,18 @@ export default new Vuex.Store({
   currentEvent: null,
   },
   getters: {
-      g_sideBarOpen(state) {
-          return state.sideBarOpen;
-      },
+    g_sideBarOpen(state) {
+      return state.sideBarOpen;
+    },
     getHorseCharacteristics: (state) => (eventid: number) => {
       return state.characteristics;
-  },
-  getCurrentEvent: (state) => {
-    return state.currentEvent;
-  },
-  getEvents: (state) => {
-    return state.events;
-  },
+    },
+    getCurrentEvent: (state) => {
+      return state.currentEvent;
+    },
+    getEvents: (state) => {
+      return state.events;
+    },
   },
   mutations: {
       toggleSideBar(state) {
@@ -46,8 +59,8 @@ actions: {
       axios.
         get('https://localhost:5001/api/events')
       .then((response) => {
-        debugger;
       });
     },
   },
-})
+});
+ */
