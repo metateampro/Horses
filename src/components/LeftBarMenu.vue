@@ -98,8 +98,19 @@ import AppBar from './AppBar.vue'
             { text: 'Дни спортивного коннозаводства', routerLink: '/event' },
           ],
         },
-        {icon:'mdi-texture', text: 'Сводная таблица', routerLink: '/about' },
-        {text: 'Admin', routerLink: '/admin'},
+		{icon:'mdi-texture', text: 'Сводная таблица', routerLink: '/about' },
+		{
+          icon: 'mdi-chevron-up', 'icon-alt': 'mdi-chevron-down',
+          text: 'Реестры',
+          model: false,
+          children: [
+            { text: 'Лошадки', title: 'horse', routerLink: '/edit' },
+            { text: 'Классы', title: 'classes', routerLink: '/edit' },
+            { text: 'Харрактеристики', title: 'characteristics', routerLink: '/edit' },
+            { text: 'Мероприятия', title: 'events', routerLink: '/edit' },
+          ],
+        },
+        {icon:'mdi-texture', text: 'Admin', routerLink: '/admin'},
       ],
     }),
   }
