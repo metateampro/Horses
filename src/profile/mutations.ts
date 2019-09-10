@@ -1,5 +1,5 @@
 import { MutationTree } from 'vuex';
-import { ProfileState, User } from './types';
+import { ProfileState, EventH } from './types';
 
 export const mutations: MutationTree<ProfileState> = {
   toggleSideBar(state) {
@@ -8,7 +8,7 @@ export const mutations: MutationTree<ProfileState> = {
   setEventsFromAPI: (state) => (events: []) => {
     state.events = events;
   },
-  setCurrentEvent(state, eventIndex) {
-    // state.currentEvent = state.events.find((event) => event.eventid === eventIndex) || null;
+  setCurrentEvent(state, event: EventH) {
+    state.currentEvent = event;
   },
 };
