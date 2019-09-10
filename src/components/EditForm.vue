@@ -26,7 +26,7 @@
                 ></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field label="Email*" required></v-text-field>
+				<v-text-field label="Email*" v-model="Horses.title"></v-text-field>
               </v-col>
               <v-col cols="12">
                 <v-text-field label="Password*" type="password" required></v-text-field>
@@ -58,10 +58,19 @@
     </v-dialog>
   </v-row>
 </template>
-<script>
-  export default {
-    data: () => ({
-      dialog: false,
-    }),
-  }
+<script lang="ts">
+import Vue from 'vue';
+import { State, Action, Getter, Mutation } from "vuex-class";
+import Component from "vue-class-component";
+import { ProfileState, Horse, Form } from "@/profile/types";
+const namespace: string = "profile";
+
+@Component
+export default class EditForm extends Vue {
+	@State('profile') profile: ProfileState;
+
+	@Getter('getHorses', { namespace }) Horses: Horse[];
+	dialog=false;
+
+};
 </script>

@@ -1,5 +1,5 @@
 import { GetterTree } from 'vuex';
-import { ProfileState, EventH, Form } from './types';
+import { ProfileState, EventH, Form, Horse } from './types';
 import { RootState } from '../types';
 
 export const getters: GetterTree<ProfileState, RootState> = {
@@ -14,6 +14,9 @@ export const getters: GetterTree<ProfileState, RootState> = {
   },
   getForms({ forms }): Form[] {
     return forms;
+  },
+  getHorses({ horses }): Horse[] | undefined {
+    return horses;
   },
 };
 
