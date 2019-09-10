@@ -1,8 +1,10 @@
 <template>
-	<v-layout>
-		<AdminBar />
+	<v-container>
+		<v-layout>
+			<AdminBar />
+		</v-layout>
 		<AdminContent />
-	</v-layout>
+	</v-container>
 </template>
 
 <script lang="ts">
