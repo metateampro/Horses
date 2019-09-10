@@ -4,17 +4,17 @@
 			<v-col cols="8">
 				<v-row>
 					<v-col cols="10">
-						<v-text-field label="Название мероприятия" v-model="currentEvent.Title"></v-text-field>	
+						<v-text-field label="Название мероприятия" v-model="currentEvent.title"></v-text-field>	
 					</v-col>
 					<v-col cols="2">
-						<v-text-field label="Кол-во судей" v-model="currentEvent.Judges" type="number" ></v-text-field>
+						<v-text-field label="Кол-во судей" v-model="currentEvent.judges" type="number" ></v-text-field>
 					</v-col>
 				</v-row>
-				<v-text-field label="Адрес мероприятия" v-model="currentEvent.Adress" ></v-text-field>
+				<v-text-field label="Адрес мероприятия" v-model="currentEvent.adress" ></v-text-field>
 
 				<v-select
-					v-model="currentEvent.Characteristics"
-					:items="Events.Characteristics"
+					v-model="currentEvent.characteristics"
+					:items="Events.characteristics"
 					:menu-props="{ maxHeight: '500' }"
 					label="Характеристики"
 					multiple
@@ -25,8 +25,8 @@
 				</v-select>
 
 				<v-select
-					v-model="currentEvent.Hclasses"
-					:items="Events.Hclasses"
+					v-model="currentEvent.hclasses"
+					:items="Events.hclasses"
 					:menu-props="{ maxHeight: '500' }"
 					label="Классы"
 					multiple
@@ -37,8 +37,8 @@
 				</v-select>
 
 				<v-select
-					v-model="currentEvent.Horses"
-					:items="Events.Horses"
+					v-model="currentEvent.horses"
+					:items="Events.horses"
 					:menu-props="{ maxHeight: '500' }"
 					label="Лошади"
 					multiple
@@ -51,7 +51,7 @@
 
 			</v-col>
 			<v-col cols="4">
-				<v-date-picker v-model="currentEvent.EventDate" full-width></v-date-picker>
+				<v-date-picker v-model="currentEvent.eventdate" full-width></v-date-picker>
 			</v-col>
 		</v-row>
 		<v-fab-transition>

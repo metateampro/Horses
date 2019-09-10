@@ -1,14 +1,23 @@
 import { MutationTree } from 'vuex';
-import { ProfileState, EventH } from './types';
+import { ProfileState, EventH, Horse, Hclass, Characteristic } from './types';
 
 export const mutations: MutationTree<ProfileState> = {
-  toggleSideBar(state) {
-    state.sideBarOpen = !state.sideBarOpen;
-  },
-  setEventsFromAPI: (state) => (events: []) => {
-    state.events = events;
+  toggleSideBar({ sideBarOpen }) {
+    sideBarOpen = !sideBarOpen;
   },
   setCurrentEvent(state, event: EventH) {
     state.currentEvent = event;
+  },
+  setEvents(state, eventsArr: EventH[]) {
+    state.events = eventsArr;
+  },
+  setHorses(state, horsesArr: Horse[]) {
+    state.horses = horsesArr;
+  },
+  setHclasses(state, hlcassesArr: Hclass[]) {
+    state.hclassess = hlcassesArr;
+  },
+  setCharacteristics(state, characteristicsArr: Characteristic[]) {
+    state.characteristics = characteristicsArr;
   },
 };

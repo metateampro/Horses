@@ -8,19 +8,16 @@ import { RootState } from '../types';
 
 export const state: ProfileState = {
   sideBarOpen: false,
-  events: [
-    {EventId: 1, Title: 'Чемпионат для лошадей Орловской рысистой породы'},
-    {EventId: 2, Title: 'Кубок среди лошадей Ахалтекинской чистокровной породы'},
-  ],
+  events: [],
   horses: [],
   characteristics: [],
   hclassess: [],
-  currentEvent: null,
+  currentEvent: {eventid: 0, title: 'Выберите мероприятие'},
   forms: [
-    {FormName: 'EventH', FormTitle: 'Мероприятие'},
-    {FormName: 'Characteristic', FormTitle: 'Характеристика'},
-    {FormName: 'Hclass', FormTitle: 'Класс'},
-    {FormName: 'Horse', FormTitle: 'Лошадь'},
+    {formname: 'EventH', formtitle: 'Мероприятие'},
+    {formname: 'Characteristic', formtitle: 'Характеристика'},
+    {formname: 'Hclass', formtitle: 'Класс'},
+    {formname: 'Horse', formtitle: 'Лошадь'},
   ],
 };
 

@@ -6,7 +6,7 @@
 		<v-divider class="mx-4" vertical></v-divider>
 		<v-menu offset-y>
 			<template v-slot:activator="{ on }">
-				<v-btn color="primary" dark	v-on="on">{{ currentEvent && currentEvent.Title || 'Выберите мероприятие'}}</v-btn>
+				<v-btn color="primary" dark	v-on="on">{{ currentEvent && currentEvent.title || 'Выберите мероприятие'}}</v-btn>
 			</template>
 			<v-list>
 				<v-list-item
@@ -14,7 +14,7 @@
 					:key="index"
 					@click="setCurrentEvent(event)">
 
-					<v-list-item-title>{{ event.Title }}</v-list-item-title>
+					<v-list-item-title>{{ event.title }}</v-list-item-title>
 				</v-list-item>
 			</v-list>
 		</v-menu>
@@ -29,7 +29,7 @@
 					:key="index"
 					@click="setCurrentEvent(event)">
 
-					<v-list-item-title>{{ form.FormTitle }}</v-list-item-title>
+					<v-list-item-title>{{ form.formtitle }}</v-list-item-title>
 				</v-list-item>
 			</v-list>
 		</v-menu>

@@ -1,9 +1,8 @@
 <template>  
     <v-app-bar
-    :clipped-left="$vuetify.breakpoint.lgAndUp"
-    app
-	dark
-    >
+        :clipped-left="$vuetify.breakpoint.lgAndUp"
+        app
+        dark>
     <v-toolbar-title
         style="width: 300px"
         class="ml-0"
@@ -40,21 +39,14 @@
     </v-app-bar>
 </template>
 
-<script>
-  export default {
-    props: {
-        source: String,
-    },
-    methods:{
-        toggleSideBar(){
-            this.$store.commit('toggleSideBar');
-        }
-    },
-    data: () => ({
-      dialog: false,
-      drawer: null,
-      items: [ 
-      ],
-    }),
-  }
+<script lang="ts">
+import Vue from 'vue';
+import { Mutation } from "vuex-class";
+import Component from "vue-class-component";
+const namespace: string = "profile";
+
+@Component
+export default class AppBar extends Vue {
+    @Mutation('toggleSideBar', { namespace }) toggleSideBar: boolean;
+}
 </script>

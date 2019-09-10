@@ -3,7 +3,7 @@ import { ProfileState, EventH, Form } from './types';
 import { RootState } from '../types';
 
 export const getters: GetterTree<ProfileState, RootState> = {
-  g_sideBarOpen({ sideBarOpen }): boolean {
+  getSideBarOpen({ sideBarOpen }): boolean {
     return sideBarOpen;
   },
   getCurrentEvent({ currentEvent }): EventH | null {

@@ -6,38 +6,38 @@ export interface User {
 }
 
 export interface EventH {
-  EventId: number;
-  Title: string;
-  Judges?: number;
-  EventDate?: Date;
-  Adress?: string;
+  eventid: number;
+  title: string;
+  judges?: number;
+  eventdate?: Date;
+  adress?: string;
 
-  Hclasses?: Hclass[];
-  Characteristics?: Characteristic[];
-  Horses?: Horse[];
+  hclasses?: Hclass[];
+  characteristics?: Characteristic[];
+  horses?: Horse[];
 }
 
 export interface Hclass {
-  ClassId: number;
-  Title: string;
+  classid: number;
+  title: string;
 }
 
 export interface Horse {
-  HorseId: number;
-  Title: string;
-  Number: number | null;
-  Age: string;
-  HclassId: Hclass;
+  horseid: number;
+  title: string;
+  number: number | null;
+  age: string;
+  hclassid: Hclass;
 }
 
 export interface Characteristic {
-  CharacteristicId: number;
-  Title: string;
+  characteristicid: number;
+  title: string;
 }
 
 export interface Form {
-  FormName: string;
-  FormTitle: string;
+  formname: string;
+  formtitle: string;
 }
 
 export interface ProfileState {
@@ -46,7 +46,7 @@ export interface ProfileState {
   horses?: Horse[];
   characteristics?: Characteristic[];
   hclassess?: Hclass[];
-  currentEvent: EventH | null;
+  currentEvent: EventH;
   forms: Form[];
 }
 

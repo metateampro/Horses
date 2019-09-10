@@ -1,30 +1,58 @@
 import { ActionTree } from 'vuex';
 import axios from 'axios';
-import { ProfileState, EventH } from './types';
+import { ProfileState, EventH, Horse, Characteristic, Hclass} from './types';
 import { RootState } from '../types';
 
+const url: string = 'http://localhost:5000';
 
 export const actions: ActionTree<ProfileState, RootState> = {
-  fetchData({ commit }): any {
+
+  saveEvent(state, event: EventH): any {
     axios({
-      url: 'http://localhost:59291/api/events'
-    }).then((response) => {
-      const payload: Event = response && response.data;
-      //commit('profileLoaded', payload);
-    }, (error) => {
-      console.log(error);
-      // commit('profileError');
+      url: url + '/api/events/' + event.eventid,
+      method: 'PUT',
+      data: event,
     });
   },
-  saveEvent({ dispatch }, event: EventH): any {
-	  axios({
-		  url: 'http://localhost:59291/api/events/' + event.EventId,
-		  method: 'POST',
-		  data: event
-	  }).then((response) => {
-		  console.log(response);
-	  }).catch((error) => {
-		  console.log(error);
-	  })
-  }
+
+
+  loadEvents({ commit }): any {
+    axios({
+      url: url + '/api/events',
+      method: 'GET',
+    }).then((response) => {
+      const events: EventH[] = response && response.data;
+      commit('setEvents', events);
+    });
+  },
+
+  loadHorses({ commit }): any {
+    axios({
+      url: url + '/api/horses',
+      method: 'GET',
+    }).then((response) => {
+      const horses: Horse[] = response && response.data;
+      commit('setHorses', horses);
+    });
+  },
+
+  loadHclasses({ commit }): any {
+    axios({
+      url: url + '/api/hclasses',
+      method: 'GET',
+    }).then((response) => {
+      const hclasses: Hclass[] = response && response.data;
+      commit('setHclasses', hclasses);
+    });
+  },
+
+  loadCharacteristics({ commit }): any {
+    axios({
+      url: url + '/api/characteristics',
+      method: 'GET',
+    }).then((response) => {
+      const characteristics: Characteristic[] = response && response.data;
+      commit('setCharacteristics', characteristics);
+    });
+  },
 };
