@@ -1,18 +1,19 @@
-// profile/getters.ts
 import { GetterTree } from 'vuex';
-import { ProfileState, EventH } from './types';
+import { ProfileState, EventH, Form } from './types';
 import { RootState } from '../types';
 
 export const getters: GetterTree<ProfileState, RootState> = {
-  g_sideBarOpen(state): boolean {
-    return state.sideBarOpen;
+  g_sideBarOpen({ sideBarOpen }): boolean {
+    return sideBarOpen;
   },
-  //
-  getCurrentEvent(state): EventH | null {
-    return state.currentEvent;
+  getCurrentEvent({ currentEvent }): EventH | null {
+    return currentEvent;
   },
-  getEvents(state): EventH[] | undefined {
-    return state.events;
+  getEvents({ events }): EventH[] | undefined {
+    return events;
+  },
+  getForms({ forms }): Form[] {
+    return forms;
   },
 };
 

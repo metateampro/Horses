@@ -35,6 +35,11 @@ export interface Characteristic {
   Title: string;
 }
 
+export interface Form {
+  FormName: string;
+  FormTitle: string;
+}
+
 export interface ProfileState {
   sideBarOpen: boolean;
   events?: EventH[];
@@ -42,5 +47,6 @@ export interface ProfileState {
   characteristics?: Characteristic[];
   hclassess?: Hclass[];
   currentEvent: EventH | null;
+  forms: Form[];
 }
 

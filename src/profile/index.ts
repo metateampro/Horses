@@ -9,13 +9,19 @@ import { RootState } from '../types';
 export const state: ProfileState = {
   sideBarOpen: false,
   events: [
-    {EventId: 1, Title: 'ff'},
-    {EventId: 2, Title: 'gg'},
+    {EventId: 1, Title: 'Чемпионат для лошадей Орловской рысистой породы'},
+    {EventId: 2, Title: 'Кубок среди лошадей Ахалтекинской чистокровной породы'},
   ],
   horses: [],
   characteristics: [],
   hclassess: [],
   currentEvent: null,
+  forms: [
+    {FormName: 'EventH', FormTitle: 'Мероприятие'},
+    {FormName: 'Characteristic', FormTitle: 'Характеристика'},
+    {FormName: 'Hclass', FormTitle: 'Класс'},
+    {FormName: 'Horse', FormTitle: 'Лошадь'},
+  ],
 };
 
 const namespaced: boolean = true;
