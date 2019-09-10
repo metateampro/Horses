@@ -51,9 +51,6 @@ export default class AdminContent extends Vue {
 				EventDate: this.eventDate,
 			};
 		} */
-		eventTitle: () => {currentEvent && currentEvent.Title || ''},
-		eventAdress: '',
-		eventDate: undefined,
 	};
 };
 </script>

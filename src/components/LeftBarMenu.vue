@@ -3,7 +3,7 @@
       v-model="showSideBar"
       :clipped="$vuetify.breakpoint.lgAndUp"
       app
-      color="green light">
+	  color="pink">
       <v-list dense>
         <template v-for="item in items">
           <v-layout

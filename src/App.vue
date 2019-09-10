@@ -21,8 +21,5 @@ export default Vue.extend({
     AppBar,
     LeftBarMenu,
   },
-  data: () => ({
-    //
-  }),
 });
 </script>
