@@ -79,10 +79,9 @@ import Component from "vue-class-component";
 import { ProfileState, EventH, Form } from "@/profile/types";
 import func from '../../vue-temp/vue-editor-bridge';
 const namespace: string = "profile";
-import {Route} from 'vue-router'
 
 class VueWithRoute extends Vue {
-	$route: Route
+	$route: Router
 }
 
 @Component
@@ -92,7 +91,7 @@ export default class EditTable extends Vue {
 	@Action('saveEvent', { namespace }) saveEvent: any;
 	@Action('deleteEvent', { namespace }) deleteEvent: any;
 	@Getter('getEvents', { namespace }) Events: EventH[];
-	//id = $router.currentRoute.params['title'];
+	id = this.$router.currentRoute.params['title'];
 	editedIndex = -1;
 	
 	formTitle () {
