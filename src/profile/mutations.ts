@@ -11,6 +11,18 @@ export const mutations: MutationTree<ProfileState> = {
   setEvents(state, eventsArr: EventH[]) {
     state.events = eventsArr;
   },
+  addEvent(state, event: EventH) {
+    state.events && state.events.push(event);
+  },
+  saveEvent(state, event: EventH) {
+    state.events?state.events[event.eventid] = event:'';
+  },
+  deleteEvent(state, event: EventH) {
+	debugger;
+	var deletedIndex;
+	state.events &&	state.events.forEach((item, index)=>{debugger; if (item.eventid==event.eventid){deletedIndex = index}})
+    state.events && state.events.splice(deletedIndex, 1);
+  },
   setHorses(state, horsesArr: Horse[]) {
     state.horses = horsesArr;
   },

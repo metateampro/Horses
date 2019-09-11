@@ -1,5 +1,4 @@
 <template>
-  <EditTable />
 </template>
 
 <script lang="ts">

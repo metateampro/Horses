@@ -3,7 +3,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Event from './views/Event.vue';
 import Admin from './views/Admin.vue';
-import Edit from './views/Edit.vue';
+import EditTable from './views/EditTable.vue';
 
 Vue.use(Router);
 
@@ -19,7 +19,7 @@ export default new Router({
 	{
 		path: '/edit/:title',
 		name: 'edit',
-		component: Edit,
+		component: EditTable,
   
 	  },
     {

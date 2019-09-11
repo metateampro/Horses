@@ -17,32 +17,33 @@
         <v-dialog v-model="dialog" max-width="500px">
           <template v-slot:activator="{ on }">
             <v-btn color="" class="mb-2" v-on="on"><v-icon>mdi-plus</v-icon></v-btn>
-                    <v-divider
-          class="mx-4"
-          inset
-          vertical
-        ></v-divider>
+			<v-divider
+			class="mx-4"
+			inset
+			vertical
+			></v-divider>
             <v-btn color="" class="mb-2" ><v-icon>mdi-download</v-icon></v-btn>
           </template>
           <v-card>
             <v-card-title>
-              <span class="headline">{{ formTitle }}</span>
+              <span class="headline">{{ formTitle() }}</span>
             </v-card-title>
 
             <v-card-text>
               <v-container>
                 <v-row>                 
 				  <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="Events.Title" label="Наименование"></v-text-field>
+                    <v-text-field v-model="editedItem.title" label="Наименование"></v-text-field>
                   </v-col>
                   <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="Events.Adress" label="Адресс"></v-text-field>
+                    <v-text-field v-model="editedItem.adress" label="Адресс"></v-text-field>
                   </v-col>
 
                   <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="Events.Judges" label="судьи"></v-text-field>
+                    <v-text-field v-model="editedItem.judges" label="Cудьи"></v-text-field>
                   </v-col>
                 </v-row>
+				<small>*Для полной настройки мероприятий перейдиет на вкладку Admin</small>
               </v-container>
             </v-card-text>
 
@@ -76,16 +77,28 @@ import Router from 'vue-router';
 import { State, Action, Getter, Mutation } from "vuex-class";
 import Component from "vue-class-component";
 import { ProfileState, EventH, Form } from "@/profile/types";
+import func from '../../vue-temp/vue-editor-bridge';
 const namespace: string = "profile";
+import {Route} from 'vue-router'
+
+class VueWithRoute extends Vue {
+	$route: Route
+}
 
 @Component
 export default class EditTable extends Vue {
 	@State('profile') profile: ProfileState;
-
+	@Action('addEvent', { namespace }) addEvent: any;
+	@Action('saveEvent', { namespace }) saveEvent: any;
+	@Action('deleteEvent', { namespace }) deleteEvent: any;
 	@Getter('getEvents', { namespace }) Events: EventH[];
 	//id = $router.currentRoute.params['title'];
 	editedIndex = -1;
-    formTitle = this.editedIndex === -1 ? 'New Item' : 'Edit Item'
+	
+	formTitle () {
+		return this.editedIndex === -1 ? 'Новое мероприятие' : 'Редактирование мероприятия'
+	}
+
 
 	headers = [
 				{
@@ -96,17 +109,16 @@ export default class EditTable extends Vue {
 				},
 				{ text: 'Судьи', value: 'judges' },
 				{ text: 'Адрес', value: 'adress' },
+				{ text: 'Actions', value: 'action', sortable: false },
 			];
 	eventTitle?: string;
 	eventAdress?: string;
 	eventDate?: Date;
 	dialog= false;
 	editedItem= {
-		name: '',
-		calories: 0,
-		fat: 0,
-		carbs: 0,
-		protein: 0,
+		title: '',
+		adress: '',
+		judges: null,
 	};
 	defaultItem = {
 		name: '',
@@ -127,21 +139,33 @@ export default class EditTable extends Vue {
     // };
 
     close () {
-        this.dialog = false
-        setTimeout(() => {
-        	this.editedItem = Object.assign({}, this.defaultItem)
-        	this.editedIndex = -1
-        }, 300)
+		this.dialog = false;
+		this.editedIndex = -1;
     };
 
-    save (e) {
-		debugger;
-        if (this.editedIndex > -1) {
-        	Object.assign(this.desserts[this.editedIndex], this.editedItem)
-        } else {
-        	this.desserts.push(this.editedItem)
+    save () {
+		if (this.editedIndex > -1) {	
+			this.addEvent(this.editedItem);
+        } else {	
+        	this.saveEvent(this.editedItem)	
         }
+		debugger;
+
+        this.addEvent(this.editedItem)
+        this.editedIndex = -1;
         this.close()
+	};
+	editItem (item: any) {	
+		debugger;
+		this.editedIndex = this.Events.indexOf(item)	
+		
+		this.editedItem = Object.assign({}, item)	;
+        this.dialog = true	
+	};
+	deleteItem (item: any) {
+		debugger;		
+        const index = item.eventid;
+        confirm('Are you sure you want to delete this item?') && this.deleteEvent(index);	
     };
 };
 </script>

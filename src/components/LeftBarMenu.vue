@@ -70,6 +70,7 @@
 </template>
 
 <script>
+
 import AppBar from './AppBar.vue'
   export default {
     props: {
@@ -104,10 +105,10 @@ import AppBar from './AppBar.vue'
           text: 'Реестры',
           model: false,
           children: [
-            { text: 'Лошадки', title: 'horse', routerLink: '/edit' },
-            { text: 'Классы', title: 'classes', routerLink: '/edit' },
-            { text: 'Харрактеристики', title: 'characteristics', routerLink: '/edit' },
-            { text: 'Мероприятия', title: 'events', routerLink: '/edit' },
+            { text: 'Лошадки', routerLink: '/edit' },
+            { text: 'Классы', routerLink: '/edit' },
+            { text: 'Харрактеристики',  routerLink: '/edit' },
+            { text: 'Мероприятия', routerLink: '/edit' },
           ],
         },
         {icon:'mdi-texture', text: 'Admin', routerLink: '/admin'},
