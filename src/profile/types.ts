@@ -1,15 +1,8 @@
-export interface User {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone?: string;
-}
-
 export interface EventH {
   eventid: number;
   title: string;
   judges?: number;
-  eventdate?: Date;
+  // eventdate?: Date;
   adress?: string;
 
   hclasses?: Hclass[];
@@ -20,19 +13,22 @@ export interface EventH {
 export interface Hclass {
   classid: number;
   title: string;
+  event?: EventH;
 }
 
 export interface Horse {
   horseid: number;
   title: string;
-  number: number | null;
-  age: string;
-  hclassid: Hclass;
+  number?: number;
+  age: number;
+  hclass?: Hclass;
+  event?: EventH;
 }
 
 export interface Characteristic {
   characteristicid: number;
   title: string;
+  event?: EventH;
 }
 
 export interface Form {

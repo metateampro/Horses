@@ -14,7 +14,7 @@
 
 				<v-select
 					v-model="currentEvent.characteristics"
-					:items="Events.characteristics"
+					:items="Characteristics"
 					:menu-props="{ maxHeight: '500' }"
 					label="Характеристики"
 					multiple
@@ -26,7 +26,7 @@
 
 				<v-select
 					v-model="currentEvent.hclasses"
-					:items="Events.hclasses"
+					:items="hclassesSelect"
 					:menu-props="{ maxHeight: '500' }"
 					label="Классы"
 					multiple
@@ -38,7 +38,7 @@
 
 				<v-select
 					v-model="currentEvent.horses"
-					:items="Events.horses"
+					:items="horsesSelect(currentEvent.hclasses)"
 					:menu-props="{ maxHeight: '500' }"
 					label="Лошади"
 					multiple
@@ -51,7 +51,7 @@
 
 			</v-col>
 			<v-col cols="4">
-				<v-date-picker v-model="currentEvent.eventdate" full-width></v-date-picker>
+				<!-- <v-date-picker v-model="currentEvent.eventdate" full-width></v-date-picker> -->
 			</v-col>
 		</v-row>
 		<v-fab-transition>
@@ -83,10 +83,23 @@ export default class AdminContent extends Vue {
 
 	@Action('saveEvent', { namespace }) saveEvent: any;
 
+	@Getter('getForms', { namespace }) Forms: Form[];
 	@Getter('getCurrentEvent', { namespace }) currentEvent: EventH;
 	@Getter('getEvents', { namespace }) Events: EventH[];
-	@Getter('getForms', { namespace }) Forms: Form[];
+
+	@Getter('getHorses', { namespace }) Horses: Horse[];
+	@Getter('getHorsesSelect', { namespace }) horsesSelect;
+	
+	@Getter('getHclasses', { namespace }) Hclasses: Hclass[];
+	@Getter('getHclassesSelect', { namespace }) hclassesSelect;
+
+	@Getter('getCharacteristics', { namespace }) Characteristics: Characteristic[];
+	@Getter('getCharacteristicsSelect', { namespace }) characteristicsSelect;
 
 	@Mutation('setCurrentEvent', { namespace }) setCurrentEvent: EventH;
+
+	changeCharacteristic({item}): {
+
+	}
 };
 </script>
