@@ -7,7 +7,7 @@
   >
     <template v-slot:top>
       <v-toolbar flat color="white">
-        <v-toolbar-title>Оценки судей</v-toolbar-title>
+        <v-toolbar-title></v-toolbar-title>
         <v-divider
           class="mx-4"
           inset
@@ -100,42 +100,22 @@ export default class EditTable extends Vue {
 	eventTitle?: string;
 	eventAdress?: string;
 	eventDate?: Date;
-    data() { 
-		return{
-			dialog: false,
-			headers: [
-				{
-				text: 'Dessert (100g serving)',
-				align: 'left',
-				sortable: false,
-				value: 'name',
-				},
-				{ text: 'Calories', value: 'calories' },
-				{ text: 'Fat (g)', value: 'fat' },
-				{ text: 'Carbs (g)', value: 'carbs' },
-				{ text: 'Protein (g)', value: 'protein' },
-				{ text: 'Actions', value: 'action', sortable: false },
-			],
-			desserts: [],
-			editedIndex: -1,
-			editedItem: {
-				name: '',
-				calories: 0,
-				fat: 0,
-				carbs: 0,
-				protein: 0,
-			},
-			defaultItem: {
-				name: '',
-				calories: 0,
-				fat: 0,
-				carbs: 0,
-				protein: 0,
-			},
-		}
-    };
-
-    
+	dialog= false;
+	desserts= [];
+	editedIndex= -1;
+	editedItem= {
+		name: '',
+		calories: 0,
+		fat: 0,
+		carbs: 0,
+		protein: 0,
+	};
+	defaultItem = {
+		name: '',
+		calories: 0,
+		fat: 0,
+		carbs: 0,
+		protein: 0,
+    };  
 };
-  
 </script>
