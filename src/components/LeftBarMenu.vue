@@ -1,6 +1,5 @@
 <template>
     <v-navigation-drawer
-      v-model="showSideBar"
       :clipped="$vuetify.breakpoint.lgAndUp"
       app
 	  color="pink">
@@ -77,11 +76,6 @@ import AppBar from './AppBar.vue'
     },
     components:{
             'side-bar': AppBar
-    },
-    computed:{
-        showSideBar(){
-          return this.$store.getters.g_sideBarOpen;
-        }
     },
     data: () => ({
       dialog: false,

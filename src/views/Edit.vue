@@ -1,14 +1,14 @@
 <template>
-  <EditForm />
+  <EditTable />
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import EditForm from '../components/EditForm.vue';
+import EditTable from '../components/EditTable.vue';
 
 export default Vue.extend({
   components: {
-    EditForm,
+    EditTable,
   },
 });
 </script>

@@ -26,19 +26,6 @@ import Vue from "vue";
       
         id : this.$router.currentRoute.params['text'],
         search: '',
-        headers: [
-          {
-            text: 'Dessert (100g serving)',
-            align: 'left',
-            sortable: false,
-            value: 'name',
-          },
-          { text: 'Calories', value: 'calories' },
-          { text: 'Fat (g)', value: 'fat' },
-          { text: 'Carbs (g)', value: 'carbs' },
-          { text: 'Protein (g)', value: 'protein' },
-          { text: 'Iron (%)', value: 'iron' },
-        ],
         desserts: [
           {
             name: 'Gingerbread',
@@ -55,14 +42,6 @@ import Vue from "vue";
             carbs: 94,
             protein: 0.0,
             iron: '0%',
-          },
-          {
-            name: 'Lollipop',
-            calories: 392,
-            fat: 0.2,
-            carbs: 98,
-            protein: 0,
-            iron: '2%',
           },
         ],
       }
