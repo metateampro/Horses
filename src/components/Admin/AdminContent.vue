@@ -13,15 +13,17 @@
 				<v-text-field label="Адрес мероприятия" v-model="currentEvent.adress" ></v-text-field>
 
 				<v-select
-					v-model="currentEvent.characteristics"
-					:items="Characteristics"
+					v-model="selectedCharacteristics"
+					:items="characteristicsSelect"
 					:menu-props="{ maxHeight: '500' }"
 					label="Характеристики"
 					multiple
 					hint="Выберите характеристики для оценки"
 					persistent-hint
 					clearable
-					counter>
+					counter
+					
+					@input="changeCharacteristic(selectedCharacteristics)">
 				</v-select>
 
 				<v-select
@@ -51,7 +53,7 @@
 
 			</v-col>
 			<v-col cols="4">
-				<!-- <v-date-picker v-model="currentEvent.eventdate" full-width></v-date-picker> -->
+				<v-date-picker v-model="currentEvent.eventdate" full-width></v-date-picker>
 			</v-col>
 		</v-row>
 		<v-fab-transition>
@@ -72,34 +74,41 @@
 </template>
 <script lang="ts">
 import Vue from 'vue';
-import { State, Action, Getter, Mutation } from "vuex-class";
-import Component from "vue-class-component";
-import { ProfileState, EventH, Form } from "@/profile/types";
-const namespace: string = "profile";
+import { State, Action, Getter, Mutation } from 'vuex-class';
+import Component from 'vue-class-component';
+import { ProfileState, EventH, Form } from '@/profile/types';
+const namespace: string = 'profile';
 
 @Component
 export default class AdminContent extends Vue {
-	@State('profile') profile: ProfileState;
+  @State('profile') public profile: ProfileState;
 
-	@Action('saveEvent', { namespace }) saveEvent: any;
+  @Action('saveEvent', { namespace }) public saveEvent: any;
 
-	@Getter('getForms', { namespace }) Forms: Form[];
-	@Getter('getCurrentEvent', { namespace }) currentEvent: EventH;
-	@Getter('getEvents', { namespace }) Events: EventH[];
+  @Getter('getForms', { namespace }) public Forms: Form[];
+  @Getter('getCurrentEvent', { namespace }) public currentEvent: EventH;
+  @Getter('getEvents', { namespace }) public Events: EventH[];
 
-	@Getter('getHorses', { namespace }) Horses: Horse[];
-	@Getter('getHorsesSelect', { namespace }) horsesSelect;
-	
-	@Getter('getHclasses', { namespace }) Hclasses: Hclass[];
-	@Getter('getHclassesSelect', { namespace }) hclassesSelect;
+  @Getter('getHorses', { namespace }) public Horses: Horse[];
+  @Getter('getHorsesSelect', { namespace }) public horsesSelect;
 
-	@Getter('getCharacteristics', { namespace }) Characteristics: Characteristic[];
-	@Getter('getCharacteristicsSelect', { namespace }) characteristicsSelect;
+  @Getter('getHclasses', { namespace }) public Hclasses: Hclass[];
+  @Getter('getHclassesSelect', { namespace }) public hclassesSelect;
 
-	@Mutation('setCurrentEvent', { namespace }) setCurrentEvent: EventH;
+  @Getter('getCharacteristics', { namespace }) public Characteristics: Characteristic[];
+  @Getter('getCharacteristicsSelect', { namespace }) public characteristicsSelect;
 
-	changeCharacteristic({item}): {
+  @Mutation('setCurrentEvent', { namespace }) public setCurrentEvent: EventH;
 
-	}
-};
+  public selectedCharacteristics: number | null = null;
+
+  public changeCharacteristic(item) {
+    this.currentEvent.characteristics = [];
+    item.forEach((value) => {
+      this.currentEvent.characteristics.push(
+        this.Characteristics.find((characteristic) => characteristic.characteristicid === value),
+      );
+    });
+  }
+}
 </script>

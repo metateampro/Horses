@@ -1,24 +1,24 @@
-class EventH{
-	EventId: number;
-	Title: string;
-	Judges: number | null;
-	EventDate: Date;
-	Adress: string;
+class EventH {
+  public EventId: number;
+  public Title: string;
+  public Judges: number | null;
+  public EventDate: Date;
+  public Adress: string;
 
-	Hclasses: Hclass[];
-	Characteristics: Characteristic[];
-	Horses: Horse[];
+  public Hclasses: Hclass[];
+  public Characteristics: Characteristic[];
+  public Horses: Horse[];
 
 
-	constructor(public eventid: number, public title: string, public judges: number | null, public eventdate: Date, public adress: string){
-		this.EventId = eventid;
-		this.Title = title;
-		this.Judges = judges;
-		this.EventDate = eventdate;
-		this.Adress = adress;
+  constructor(public eventid: number, public title: string, public judges: number | null, public eventdate: Date, public adress: string) {
+    this.EventId = eventid;
+    this.Title = title;
+    this.Judges = judges;
+    this.EventDate = eventdate;
+    this.Adress = adress;
 
-		this.Hclasses = [];
-		this.Characteristics = [];
-		this.Horses = [];
-	}
+    this.Hclasses = [];
+    this.Characteristics = [];
+    this.Horses = [];
+  }
 }

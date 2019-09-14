@@ -41,12 +41,12 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { Mutation } from "vuex-class";
-import Component from "vue-class-component";
-const namespace: string = "profile";
+import { Mutation } from 'vuex-class';
+import Component from 'vue-class-component';
+const namespace: string = 'profile';
 
 @Component
 export default class AppBar extends Vue {
-    @Mutation('toggleSideBar', { namespace }) toggleSideBar: boolean;
+    @Mutation('toggleSideBar', { namespace }) public toggleSideBar: boolean;
 }
 </script>

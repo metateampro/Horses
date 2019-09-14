@@ -8,16 +8,16 @@
 	</v-col>
 </template>
 <script lang="ts">
-import Vue from 'vue'
+import Vue from 'vue';
 export default Vue.extend({
-	data: () => ({
-	}),
-	computed: {
-		HorseCharacteristics () {
-			return {}; //this.$store.
-		}
-	}
-})
+  data: () => ({
+  }),
+  computed: {
+    HorseCharacteristics() {
+      return {}; // this.$store.
+    },
+  },
+});
 </script>
 <style scoped>
 
