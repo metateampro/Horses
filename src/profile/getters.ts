@@ -18,13 +18,16 @@ export const getters: GetterTree<ProfileState, RootState> = {
   getHorses({ horses }): Horse[] | undefined {
     return horses;
   },
-  getHorsesSelect({ horses }) {
-    return (hclasses: Hclass[]) => {
-      const filteredhorses =
-        horses && horses.filter(
-          (horse) => hclasses && hclasses.find((hclass) => hclass === horse.hclass));
-      return filteredhorses && filteredhorses.map((horse) => ({text: horse.title, value: horse.horseid }));
-    };
+  getHorsesSelect({ horses, currentEvent }) {
+      return horses &&
+        horses.filter(
+          (horse) =>
+          currentEvent.eventhclass &&
+          currentEvent.eventhclass.find(
+            (ec) =>
+            ec.hclassid === horse.hclassid,
+          ),
+        );
   },
 
 

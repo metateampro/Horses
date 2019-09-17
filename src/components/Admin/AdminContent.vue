@@ -13,41 +13,49 @@
 				<v-text-field label="Адрес мероприятия" v-model="currentEvent.adress" ></v-text-field>
 
 				<v-select
-					v-model="selectedCharacteristics"
-					:items="characteristicsSelect"
+					v-model="currentEvent.eventcharacteristic"
+					:items="Characteristics"
 					:menu-props="{ maxHeight: '500' }"
 					label="Характеристики"
+					item-text="title"
+					item-value="characteristicid"
 					multiple
 					hint="Выберите характеристики для оценки"
 					persistent-hint
 					clearable
 					counter
-					
-					@input="changeCharacteristic(selectedCharacteristics)">
+					@input="setChars"
+					>
 				</v-select>
 
 				<v-select
-					v-model="currentEvent.hclasses"
-					:items="hclassesSelect"
+					v-model="currentEvent.eventhclass"
+					:items="Hclasses"
 					:menu-props="{ maxHeight: '500' }"
 					label="Классы"
+					item-text="title"
+					item-value="hclassid"
 					multiple
 					hint="Выберите классы лошадей"
 					persistent-hint
 					clearable
-					counter>
+					counter
+					@input="setClasses">
 				</v-select>
 
 				<v-select
-					v-model="currentEvent.horses"
-					:items="horsesSelect(currentEvent.hclasses)"
+					v-model="currentEvent.eventhorse"
+					:items="selectHorses"
 					:menu-props="{ maxHeight: '500' }"
 					label="Лошади"
+					item-text="title"
+					item-value="horseid"
 					multiple
 					hint="Выберите лошадей"
 					persistent-hint
 					clearable
-					counter>
+					counter
+					@input="setHorses">
 				</v-select>
 
 
@@ -76,7 +84,7 @@
 import Vue from 'vue';
 import { State, Action, Getter, Mutation } from 'vuex-class';
 import Component from 'vue-class-component';
-import { ProfileState, EventH, Form } from '@/profile/types';
+import { ProfileState, EventH, Form, EventCharacteristic, Horse, Characteristic } from '@/profile/types';
 const namespace: string = 'profile';
 
 @Component
@@ -86,29 +94,54 @@ export default class AdminContent extends Vue {
   @Action('saveEvent', { namespace }) public saveEvent: any;
 
   @Getter('getForms', { namespace }) public Forms: Form[];
-  @Getter('getCurrentEvent', { namespace }) public currentEvent: EventH;
+	@Getter('getCurrentEvent', { namespace }) public currentEvent: EventH;
+	
   @Getter('getEvents', { namespace }) public Events: EventH[];
-
-  @Getter('getHorses', { namespace }) public Horses: Horse[];
-  @Getter('getHorsesSelect', { namespace }) public horsesSelect;
-
+	@Getter('getHorses', { namespace }) public Horses: Horse[];
+	@Getter('getHorsesSelect', { namespace }) public selectHorses: Horse[];
   @Getter('getHclasses', { namespace }) public Hclasses: Hclass[];
-  @Getter('getHclassesSelect', { namespace }) public hclassesSelect;
-
-  @Getter('getCharacteristics', { namespace }) public Characteristics: Characteristic[];
-  @Getter('getCharacteristicsSelect', { namespace }) public characteristicsSelect;
-
+	@Getter('getCharacteristics', { namespace }) public Characteristics: Characteristic[];
+	
   @Mutation('setCurrentEvent', { namespace }) public setCurrentEvent: EventH;
 
-  public selectedCharacteristics: number | null = null;
-
-  public changeCharacteristic(item) {
-    this.currentEvent.characteristics = [];
-    item.forEach((value) => {
-      this.currentEvent.characteristics.push(
-        this.Characteristics.find((characteristic) => characteristic.characteristicid === value),
-      );
-    });
-  }
+	public setChars(charsArr:number[]) {
+		this.currentEvent.eventcharacteristic = 
+			charsArr.map((char:number) =>
+				({
+					eventid: this.currentEvent.eventid,
+					characteristicid: char
+				})
+		)
+	}
+	public setClasses(hclassesArr:number[]) {
+		this.currentEvent.eventhclass = 
+			hclassesArr.map((hclass:number) =>
+				({
+					eventid: this.currentEvent.eventid,
+					hclassid: hclass
+				})
+		)
+	}
+	public setHorses(horsesArr:number[]) {
+		this.currentEvent.eventhorse = 
+			horsesArr.map((horse:number) =>
+				({
+					eventid: this.currentEvent.eventid,
+					horseid: horse
+				})
+		)
+	}
+	get filteredHorses () {
+		return 
+			this.Horses; /* && 
+			this.Horses.filter(
+				(horse) => {
+				console.log(this.currentEvent);
+					return this.currentEvent.eventhclass && this.currentEvent.eventhclass.find(
+						eh => eh.hclassid === horse.hclassid
+					)
+				}
+			); */
+	}
 }
 </script>

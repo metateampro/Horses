@@ -1,3 +1,15 @@
+export interface EventCharacteristic {
+  eventid: number;
+  characteristicid: number;
+}
+export interface EventHclass {
+  eventid: number;
+  hclassid: number;
+}
+export interface EventHorse {
+  eventid: number;
+  horseid: number;
+}
 export interface EventH {
   eventid: number;
   title: string;
@@ -8,12 +20,15 @@ export interface EventH {
   hclasses?: Hclass[];
   characteristics?: Characteristic[];
   horses?: Horse[];
+
+  eventcharacteristic?: EventCharacteristic[];
+  eventhclass?: EventHclass[];
+  eventhorse?: EventHorse[];
 }
 
 export interface Hclass {
-  classid: number;
+  hclassid: number;
   title: string;
-  event?: EventH;
 }
 
 export interface Horse {
@@ -22,13 +37,12 @@ export interface Horse {
   number?: number;
   age: number;
   hclass?: Hclass;
-  event?: EventH;
+  hclassid?: number;
 }
 
 export interface Characteristic {
   characteristicid: number;
   title: string;
-  event?: EventH;
 }
 
 export interface Form {

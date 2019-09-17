@@ -12,10 +12,9 @@ export const actions: ActionTree<ProfileState, RootState> = {
       url: url + '/api/events/' + event.eventid,
       method: 'PUT',
       data: event,
-    }).then((response)=>{
-		debugger;
-		state.commit('saveEvent', event);
-	})
+    }).then((response) => {
+      state.commit('saveEvent', event);
+    });
   },
 
   addEvent(state, event: EventH): any {
@@ -23,33 +22,31 @@ export const actions: ActionTree<ProfileState, RootState> = {
       url: url + '/api/events/',
       method: 'POST',
       data: event,
-    }).then((response)=>{
-		const event: EventH = response && response.data;
-		state.commit('addEvent', event);
-		debugger;
-	});
+    }).then((response) => {
+      const event: EventH = response && response.data;
+      state.commit('addEvent', event);
+    });
   },
   deleteEvent(state, eventid: EventH): any {
-	  debugger;
-    axios({
+   axios({
       url: url + '/api/events/' + eventid,
       method: 'DELETE',
       data: eventid,
-    }).then((response)=>{
-		const event: EventH = response && response.data;
-		state.commit('deleteEvent', event);
-	}).catch((Error)=>(
-		alert("Удаление невозможно")
-	));
+    }).then((response) => {
+      const event: EventH = response && response.data;
+      state.commit('deleteEvent', event);
+    }).catch((Error) => (
+      alert('Удаление невозможно')
+    ));
   },
   addHorse(state, horse: Horse): any {
     axios({
       url: url + '/api/horses/',
       method: 'POST',
       data: horse,
-    }).then((response)=>{
-		debugger;
-	});
+    }).then((response) => {
+      // ff
+    });
   },
 
 

@@ -1,0 +1,59 @@
+[{
+  "hclass": {
+    "eventhclass": [],
+    "horse": [{
+      "evaluate": [],
+      "eventhorse": [],
+      "horseid": 2,
+      "title": "Лошадь 2",
+      "number": 2,
+      "hclassid": 1,
+      "age": null
+    }],
+    "hclassid": 1,
+    "title": "Кобылки 2-х лет 2017 г.р."
+  },
+  "evaluate": [],
+  "eventhorse": [],
+  "horseid": 1,
+  "title": "Лошадь 1",
+  "number": 1,
+  "hclassid": 1,
+  "age": null
+}, {
+  "hclass": {
+    "eventhclass": [],
+    "horse": [{
+      "evaluate": [],
+      "eventhorse": [],
+      "horseid": 1,
+      "title": "Лошадь 1",
+      "number": 1,
+      "hclassid": 1,
+      "age": null
+    }],
+    "hclassid": 1,
+    "title": "Кобылки 2-х лет 2017 г.р."
+  },
+  "evaluate": [],
+  "eventhorse": [],
+  "horseid": 2,
+  "title": "Лошадь 2",
+  "number": 2,
+  "hclassid": 1,
+  "age": null
+}, {
+  "hclass": {
+    "eventhclass": [],
+    "horse": [],
+    "hclassid": 2,
+    "title": "Жеребчики 2-х лет 2017 г.р."
+  },
+  "evaluate": [],
+  "eventhorse": [],
+  "horseid": 3,
+  "title": "Лошадь 3",
+  "number": 3,
+  "hclassid": 2,
+  "age": null
+}]
