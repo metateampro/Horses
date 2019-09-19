@@ -14,7 +14,7 @@ export interface EventH {
   eventid: number;
   title: string;
   judges?: number;
-  // eventdate?: Date;
+  eventdate?: Date | string;
   adress?: string;
 
   hclasses?: Hclass[];

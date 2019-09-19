@@ -61,7 +61,10 @@
 
 			</v-col>
 			<v-col cols="4">
-				<v-date-picker v-model="currentEvent.eventdate" full-width></v-date-picker>
+				<v-date-picker 
+					v-model="currentEvent.eventdate"
+					full-width>
+				</v-date-picker>
 			</v-col>
 		</v-row>
 		<v-fab-transition>
@@ -130,18 +133,6 @@ export default class AdminContent extends Vue {
 					horseid: horse
 				})
 		)
-	}
-	get filteredHorses () {
-		return 
-			this.Horses; /* && 
-			this.Horses.filter(
-				(horse) => {
-				console.log(this.currentEvent);
-					return this.currentEvent.eventhclass && this.currentEvent.eventhclass.find(
-						eh => eh.hclassid === horse.hclassid
-					)
-				}
-			); */
 	}
 }
 </script>
