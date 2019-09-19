@@ -6,7 +6,7 @@
 		<v-divider class="mx-4" vertical></v-divider>
 		<v-menu offset-y>
 			<template v-slot:activator="{ on }">
-				<v-btn color="primary" dark	v-on="on">{{ currentEvent && currentEvent.title || 'Выберите мероприятие'}}</v-btn>
+				<v-btn color="primary" dark	v-on="on">{{ currentEvent && currentEvent.title || 'Выберите мероприяте'}}</v-btn>
 			</template>
 			<v-list>
 				<v-list-item

@@ -56,7 +56,7 @@ export interface ProfileState {
   horses?: Horse[];
   characteristics?: Characteristic[];
   hclassess?: Hclass[];
-  currentEvent: EventH;
+  currentEvent?: EventH;
   forms: Form[];
 }
 

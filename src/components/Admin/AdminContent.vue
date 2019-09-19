@@ -1,5 +1,5 @@
 <template>
-	<v-form>
+	<v-form v-if="currentEvent">
 		<v-row>
 			<v-col cols="8">
 				<v-row>

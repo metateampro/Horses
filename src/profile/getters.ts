@@ -6,7 +6,7 @@ export const getters: GetterTree<ProfileState, RootState> = {
   getSideBarOpen({ sideBarOpen }): boolean {
     return sideBarOpen;
   },
-  getCurrentEvent({ currentEvent }): EventH | null {
+  getCurrentEvent({ currentEvent }): EventH | undefined {
     return currentEvent;
   },
   getForms({ forms }): Form[] {
@@ -22,7 +22,7 @@ export const getters: GetterTree<ProfileState, RootState> = {
       return horses &&
         horses.filter(
           (horse) =>
-          currentEvent.eventhclass &&
+          currentEvent && currentEvent.eventhclass &&
           currentEvent.eventhclass.find(
             (ec) =>
             ec.hclassid === horse.hclassid,

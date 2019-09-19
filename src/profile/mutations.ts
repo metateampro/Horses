@@ -11,7 +11,9 @@ export const mutations: MutationTree<ProfileState> = {
   },
   setEvents(state, eventsArr: EventH[]) {
     eventsArr.forEach((event) => {
-      event.eventdate = moment(event.eventdate).format('YYYY-MM-DD');
+      event.eventdate =
+        event.eventdate && moment(event.eventdate).format('YYYY-MM-DD') ||
+        moment(new Date()).format('YYYY-MM-DD');
     });
     state.events = eventsArr;
   },

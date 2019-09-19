@@ -12,7 +12,7 @@ export const state: ProfileState = {
   horses: [],
   characteristics: [],
   hclassess: [],
-  currentEvent: {eventid: 0, title: 'Выберите мероприятие'},
+  currentEvent: undefined,
   forms: [
     {formname: 'EventH', formtitle: 'Мероприятие'},
     {formname: 'Characteristic', formtitle: 'Характеристика'},
